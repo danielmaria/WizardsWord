@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Wizard's Word - MUndo bruxo</title>
+		
+		<!-- JQuery -->
+          <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+          <script src="js/cadastro.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" ></script>
+         
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+		<!-- incluindo css -->
+		<link href="css/style.css" rel="stylesheet">
+
+	</head>
+     <style>
+     body{
+          background-image: url('images/background_cadastro.jpg');
+     }
+     .container{
+          margin-top: 50px;
+     }
+
+     .col-md-offset-6 {
+         margin-left: -10px;
+          
+     }
+     .image-preview-input {
+         position: relative;
+         overflow: hidden;
+         margin: 0px;    
+         color: #333;
+         background-color: #fff;
+         border-color: #ccc;    
+     }
+     .image-preview-input input[type=file] {
+         position: absolute;
+         top: 0;
+         right: 0;
+         margin: 0;
+         padding: 0;
+         font-size: 20px;
+         cursor: pointer;
+         opacity: 0;
+         filter: alpha(opacity=0);
+     }
+     .image-preview-input-title {
+         margin-left:2px;
+     }
+     .form-group{
+          margin-top: 10px;
+     }
+     </style>
+     
+	<body>
+          <div class="container">
+              <form class="well form-horizontal" action="cadastro" method="post"  id="contact_form">
+          <fieldset>
+
+          <legend>Cadastre-se</legend>
+
+          <div class="form-group">
+               <label class="col-md-4 control-label">Nome real</label>  
+               <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                         <input  name="nome_real" placeholder="Seu nome" class="form-control"  type="text">
+                    </div>
+               </div>
+          </div>
+
+          <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>  
+               <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                         <input name="email" placeholder="E-Mail" class="form-control"  type="text">
+                    </div>
+               </div>
+          </div>
+               
+           <div class="form-group">
+              <label class="col-md-4 control-label">Gostaria de receber notícias via e-mail?</label>
+              <div class="col-md-4">
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="hosting" value="sim" /> Sim
+                      </label>
+                  </div>
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="hosting" value="nao" /> Não
+                      </label>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Text input-->
+
+          <div class="form-group">
+          <label class="col-md-4 control-label">Senha</label>  
+               <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                         <input name="senha" placeholder="*******" class="form-control" type="password">
+                    </div>
+               </div>
+          </div>
+               
+          <div class="form-group">
+            <label class="col-md-4 control-label">Rede social</label>  
+             <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+            <input name="redesocial" placeholder="Digite a url da sua rede social que mais usa" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <label class="col-md-4 control-label" >Nome do personagem</label> 
+               <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                         <input name="nome_personagem" placeholder="Nome do personagem" class="form-control"  type="text">
+                    </div>
+               </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Biografia do personagem</label>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                      <textarea class="form-control" name="comment" placeholder="Descrição do seu personagem."></textarea>
+            </div>
+            </div>
+          </div> 
+          <div class="form-group"> 
+          <label class="col-md-4 control-label">Linhagem da família</label>
+               <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                         <select name="linhagem" class="form-control selectpicker" >
+                              <option value=" " >Por favor, selecione uma linhagem</option>
+                              <option>Pura Sangue</option>
+                              <option>Mestiço</option>
+                              <option >Sem sangue bruxo</option>
+                         </select>
+                    </div>
+               </div>
+          </div>
+          <div class="form-group">
+          <label class="col-md-4 control-label">Imagem do personagem</label>
+               <div class="col-md-4 inputGroupContainer imagem">
+                       <div class="col-xs-12 col-md-12 col-md-offset-6 col-sm-8 col-sm-offset-2">  
+                           <div class="input-group image-preview">
+                               <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                               <span class="input-group-btn">
+                                   <!-- image-preview-clear button -->
+                                   <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                       <span class="glyphicon glyphicon-remove"></span> Clear
+                                   </button>
+                                   <!-- image-preview-input -->
+                                   <div class="btn btn-default image-preview-input">
+                                       <span class="glyphicon glyphicon-folder-open"></span>
+                                       <span class="image-preview-input-title">Browse</span>
+                                       <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                                   </div>
+                               </span>
+                           </div>
+                      
+                   </div>
+               </div>
+
+            </div>
+
+          <% if(msg == 'I'){ %>
+          <div class="alert alert-success" role="alert" id="success_message">Successo! <i class="glyphicon glyphicon-thumbs-up"></i> Obrigado por se cadastrar. Você já pode fazer o login.</div>
+          <%} else if(msg == 'E'){ %>
+          <div class="alert alert-danger" role="alert" id="error_message">Ops! <i class="glyphicon glyphicon-thumbs-up"></i> Algo se comportou como não devia. Por favor, verifique.</div>
+          <%}%>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+          </div>
+
+          </fieldset>
+          </form>
+          </div>
+		
+</body>
+</html>
