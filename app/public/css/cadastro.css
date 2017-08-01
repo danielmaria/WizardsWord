@@ -1,0 +1,53 @@
+ body{
+        background-image: url('../images/background_cadastro.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+     }
+     .container{
+          margin-top: 50px;
+     }
+
+     .col-md-offset-6 {
+         margin-left: -10px;
+          
+     }
+     .image-preview-input {
+         position: relative;
+         overflow: hidden;
+         margin: 0px;    
+         color: #333;
+         background-color: #fff;
+         border-color: #ccc;    
+     }
+     .image-preview-input input[type=file] {
+         position: absolute;
+         top: 0;
+         right: 0;
+         margin: 0;
+         padding: 0;
+         font-size: 20px;
+         cursor: pointer;
+         opacity: 0;
+         filter: alpha(opacity=0.9);
+     }
+     .image-preview-input-title {
+         margin-left:2px;
+     }
+     .form-group{
+          margin-top: 10px;
+     }
+        .dadada{
+            margin: 0 auto;
+  width: 50%;
+        }
+    .form-horizontal{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .form-control{
+        width: 80%;
+    }

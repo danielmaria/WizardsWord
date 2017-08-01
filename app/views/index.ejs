@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<title>Wizard's Word - MUndo bruxo</title>
+		<title>Wizard's Word - Mundo bruxo</title>
 		
 		<!-- JQuery -->
 		<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -39,13 +39,16 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
-
 									<center><span>Wizard's Word</span></center>
+									<% if(validacao == 'E'){ %>
+										<div class="alert alert-danger" role="alert" id="error_message"><center><i class="glyphicon glyphicon-remove"></i> O e-mail ou a senha inserida não corresponde a nenhuma conta.</center></div>
+									<%} else { %>
 									<br /><br />
+									<% } %>
 
-									<form action="/home" method="get">
+									<form method="post" action="/home">
 										<div class="form-group">
-											<input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nome de usuário">
+											<input type="text" name="email" id="email" class="form-control" placeholder="E-mail" value="<%=dadosForm.email%>">
 										</div>
 
 										<div class="form-group">

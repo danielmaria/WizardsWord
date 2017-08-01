@@ -7,7 +7,7 @@
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            nome_real: {
+  /*          nome_real: {
                 validators: {
                         stringLength: {
                         min: 2,
@@ -34,6 +34,13 @@
                     },
                     emailAddress: {
                         message: 'Por favor, preencha com um e-mail válido'
+                    }
+                }
+            },
+            data_nascimento: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, preencha com sua data de nascimento'
                     }
                 }
             },

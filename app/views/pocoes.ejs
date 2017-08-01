@@ -1,0 +1,58 @@
+<div id="aldecoes">					
+	<h3>Poções</h3>
+	<small style="color: black">Escolha uma poção para prepar. Tenha certeza que você tem os ingredientes corretos.</small>
+	<form class="form-cadastro" method="post" action="/sem_acao">
+
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="form-group">
+					<select class="form-control" name="acao">
+						<option value="">Escolha a poção para preparar</option>
+						<option value="1">Essência de Murtisco (1H)</option>
+						<option value="2">Poção Apimentosa (2H)</option>
+						<option value="3">Poção para Acalmar (1H)</option>
+						<option value="4">Poção para Curar Furúnculus (2H)</option>
+						<option value="5">Poção para Fazer o Cabelo Crescer (2H)</option>
+						<option value="6">Elixir da Euforia (3H)</option>
+						<option value="7">Poção Adurganic (3H)</option>
+						<option value="8">Poção Alisadora Capilar (3H)</option>
+						<option value="9">Pasta para Curar Queimaduras (2H)</option>
+						<option value="10">Solução Fortalecedora (2,5H)</option>
+						<option value="11">Pasta Laranja para Curar Queimaduras (3H)</option>
+						<option value="12">Poção Sacebak (2H)</option>
+						<option value="13">Solução para fazer Inchar (3H)</option>
+						<option value="14">Antídoto contra Veneno de Aranha (1H)</option>
+						<option value="15">Antídoto contra Veneno de Serpente (1,5H)</option>
+						<option value="16">Antídoto Simples (3H)</option>
+						<option value="17">Elixir Deflator (2H)</option>
+						<option value="18">Poção da Tosse Contínua (2H)</option>
+						<option value="19">Poção do Soluço (3H)</option>
+						<option value="20">Poção de Limpeza (3H)</option>
+						<option value="21">Poção do Gary ou Antídoto para Amortentia (2H)</option>
+						<option value="22">Fadicida (4H)</option>
+					</select>										
+				</div>
+			</div>
+			
+			<div class="col-xs-3">
+				<div class="form-group">
+					<input type="number" class="form-control" id="quantidade" placeholder="Quantidade" name="quantidade">									
+				</div>
+			</div>
+			
+			<div class="col-xs-4">
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Preparar</button>
+				</div>
+			</div>
+		</div>
+		
+		<hr />
+		<div class="row">
+			<div class="col-xs-12">
+				<span>Meus ingredientes: <%= ingredientes %></span>
+			</div>
+		</div>
+		
+	</form>
+</div>

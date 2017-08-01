@@ -13,13 +13,17 @@ var expressValidator = require('express-validator');
 /* importar o módulo do express-session */
 var expressSession = require('express-session');
 
+/* importar o módulo do multiparty */
+var multiparty = require('connect-multiparty');
 /* iniciar o objeto do express */
 var app = express();
-
+		
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
+/* configurar o middleware multiparty */
+app.use(multiparty());
 /* configurar o middleware express.static */
 app.use(express.static('./app/public'));
 

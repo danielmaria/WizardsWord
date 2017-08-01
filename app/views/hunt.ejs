@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Wizard's Word - Mundo bruxo</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="js/conversor_niveis.js"></script>
+		<link href="css/jogo.css" rel="stylesheet">
+
+	</head>
+
+	<script>
+	$(document).ready(function(){
+		$('#estatistica-pop').popover({
+			html : true, 
+			content: function() {
+				return $('#estatistica-text').html();
+			} 
+		}); 
+
+		$('[data-toggle="tooltip"]').tooltip(); 
+
+		$('#btn_sair').click(function(){
+			window.location.href= '/sair';
+		});
+
+    	$('[data-toggle="popover"]').popover(); 
+
+		$('#btn_pocoes').click(function(){
+			$('#msg').hide();
+			$.ajax({
+				url: '/pocoes',
+				method: 'get',
+				success: function(data){
+					$('.acoes').html(data);
+				}
+			});
+		});
+
+		$('#btn_viajar').click(function(){
+			$('#msg').hide();
+			$.ajax({
+				url: '/viajens',
+				method: 'get',
+				success: function(data){
+					$('.acoes').html(data);
+				}
+			});
+		});
+
+		$('#btn_hunt').click(function(){
+			$('#msg').hide();
+			$.ajax({
+				url: '/hunt',
+				method: 'get',
+				success: function(data){
+					$('.acoes').html(data);
+				}
+			});
+		});
+		$('#btn_conf').click(function(){
+			window.location.href= '/conf';
+		});
+		
+
+	});
+
+	</script>
+	<style>
+		.body-jogo{
+			background-image: url('../images/backgrounds/<%=local.nome_cod%>.jpg');
+		}
+		body { overflow-x: hidden; }
+		#img_personagem {
+			height: 225px;
+			width: 175px;
+		}
+	</style>
+	<body class="body-jogo">
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="form-group menu-sup">
+					<button type="button" class="btn btn-info pull-right iten-menu-sup" id="btn_sair"><span class="glyphicon glyphicon-log-out" title="Sair" alt="Sair" data-toggle="tooltip"  data-placement="bottom"></span></button>
+					<button type="button" class="btn btn-info pull-right iten-menu-sup" id="btn_conf"><span class="glyphicon glyphicon-cog" title="Alterar registro" alt="Alterar registro" data-toggle="tooltip"  data-placement="bottom"></span></button>
+					<button type="button" class="btn btn-info pull-right iten-menu-sup" id="estatistica-pop" class="popover-toggle" title="Estatística" data-placement="bottom"><span class="glyphicon glyphicon-stats"></span></button>
+				</div>
+				</nav>
+			</div>
+		</nav>
+		<div id="estatistica-text" style="display: none">
+			Nível: <span id="nivel_total"></span><br>
+			Total de experiência: <span><%= personagem.experiencia_rituais + personagem.experiencia_pocoes + personagem.experiencia_feiticos + personagem.experiencia_encantamento %></span><br>
+			Estamina: <span id="estamina"> <%= personagem.estamina_atual %> / <%= personagem.estamina_maxima %> </span>
+        </div>
+	<div class="container">
+	<% if(msg == 'ERRO'){ %>
+		<div class="alert alert-danger" id="msg">
+			<string>Não, não podemos tomar esta ação. O comando é inválido.</string>
+		</div>
+	<% } else if(msg == 'OK'){ %>
+		<div class="alert alert-info" id="msg">
+			<string>Ação foi realizada com sucesso, meu senhor.</string>
+		</div>
+	<% } else if(msg == 'ACAOFIM'){ %>
+		<div class="alert alert-info" id="msg">
+			<string>Meu senhor, uma ação que você ordenou acaba de ser finalizada.</string>
+		</div>
+	<% } else if(msg == 'REVO'){ %>
+		<div class="alert alert-info" id="msg">
+			<string>Sua ação foi revogada, assim como você solicitou.</string>
+		</div>
+	<% } %>
+	</div>
+		
+	    <div class="container">
+	    	
+			<div class="row">
+	    		<div class="col-sm-3 casa">
+					<img src="images/images_usuarios/<%= personagem.id_usuario %>.jpg" id="img_personagem" onerror="this.src='images/images_usuarios/nophoto.jpg'"/>
+				</div>
+
+	    		<div class="col-sm-9">
+					<div class="row barra-superior">
+						<legend>Seus níveis de magia</legend>
+						<div class="col-sm-3 itens-barra-superior"> 
+							<img src="images/habilidades/rituais.gif" title="Rituais <br> Exp: <%= personagem.experiencia_rituais %>" alt="Rituais"  data-toggle="tooltip"  data-placement="bottom"  data-html="true"/><br>
+							<span class="niveis_magia" id="nivel_rituais"><%= personagem.experiencia_rituais %></span>
+						</div>
+						
+						<div class="col-sm-3 itens-barra-superior"> 
+							<img src="images/habilidades/pocoes.gif" title="Poções <br> Exp: <%= personagem.experiencia_pocoes %>" alt="Poções" data-toggle="tooltip"  data-placement="bottom"  data-html="true"/>
+							<span class="niveis_magia"><%= personagem.experiencia_pocoes %></span>
+						</div>
+						
+						<div class="col-sm-3 itens-barra-superior"> 
+							<img src="images/habilidades/feiticos.gif" title="Feitiços <br> Exp: <%= personagem.experiencia_feiticos %>" alt="Feitiços" data-toggle="tooltip"  data-placement="bottom"  data-html="true"/>
+							<span class="niveis_magia"><%= personagem.experiencia_feiticos %></span>
+						</div>
+						
+						<div class="col-sm-3 itens-barra-superior"> 
+							<img src="images/habilidades/encantamento.gif" title="Encantamento<br> Exp: <%= personagem.experiencia_encantamento %>" alt="Encantamento" data-toggle="tooltip"  data-placement="bottom"  data-html="true"/>
+							<span class="niveis_magia"><%= personagem.experiencia_encantamento %></span>
+						</div>
+					</div>
+				</div>
+	    	</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-3">
+					<br>
+					<div class="progress">
+						<div data-placement="top" style="width: 10%;" 
+							 aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" 
+							 class="progress-bar progress-bar-success">
+							<span class="sr-only">100%</span>
+							<span class="progress-type"> Vida </span>
+						</div>
+					</div>
+					<div class="progress">
+						<div data-placement="top" style="width: <%= (personagem.estamina_atual / personagem.estamina_maxima) * 100 %>%;" 
+							 aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" 
+							 class="progress-bar progress-bar-info">
+							<span class="sr-only">100%</span>
+							<span class="progress-type"> Estamina </span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-9 acoes">
+				</div>
+			</div>
+			
+		</div>	
+		
+		<div class="barra-inferior">
+			<div class="container">
+			
+				<div class="row">
+					<div class="col-sm-1">
+						<img src="images/outros/potion.gif" title="Poções" alt="Poções" data-toggle="tooltip"  data-placement="top" id="btn_pocoes"/>
+						<span>Poções</span>
+					</div>
+					
+					<div class="col-sm-1">
+						<img src="images/outros/livros.gif" title="Livros" alt="Livros" data-toggle="tooltip"  data-placement="top"/>
+						<span>Livros</span>
+					</div>
+
+					<div class="col-sm-1">
+						<img src="images/outros/travel.gif" title="Viajar/Interagir" alt="Viajar" data-toggle="tooltip"  data-placement="top" id="btn_viajar"/>
+						<span>Viajar</span>
+					</div>
+					
+					<div class="col-sm-1">
+						<img src="images/outros/caca.gif" title="Caçar" alt="Caçar" data-toggle="tooltip"  data-placement="top" id="btn_hunt"/>
+						<span>Caçar</span>
+					</div>
+					
+					<div class="col-sm-6"></div>
+					
+					<div class="col-sm-2">
+						<img src="images/outros/coins.jpg" title="<%= personagem.moedas[0].galeao %> Galeões <br><%= personagem.moedas[0].sicle %> Sicles  <br><%= personagem.moedas[0].nuque %> Nuques " alt="Moedas" data-toggle="tooltip"  data-placement="top" data-html="true"/>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

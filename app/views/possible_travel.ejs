@@ -1,0 +1,56 @@
+<div id="viajem">					
+	<h3>Viajar</h3>
+	<small style="color: black">Escolha um destino dentre dos citados acima. Entre parênteses é apresentado o gasto de estamina a cada viajem para este local.</small>
+	<form class="form-cadastro" method="post" action="/viajar">
+
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group"> 
+					<select class="form-control" name="acao">
+						<option value="">Escolha um destino</option>
+						<%for(var i = 0; i < viajar.length; i++){ %>
+						<option value="<%= viajar[i].value %>"><%= viajar[i].nome %> ()</option>
+						<%}%>
+					</select>										
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Ir</button>
+				</div>
+			</div>
+		</div>
+	</form>	
+</div>
+<% if(interagir.length > 0){ %>
+<hr />
+<div id="interagir">					
+	<h3>Interagir</h3>
+	
+	<form class="form-cadastro" method="post" action="/sem_acao">
+
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group">
+					
+					<select class="form-control" name="acao">
+						<option value="">Escolha algo para interagir</option>
+						<%for(var i = 0; i < interagir.length; i++){ %>
+						<option value="<%= interagir[i].value %>"><%= interagir[i].nome %></option>
+						<%}%>
+					</select>
+													
+				</div>
+			</div>
+			
+			<div class="col-xs-4">
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Ir</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</form>	
+</div>
+<%}%>	

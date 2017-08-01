@@ -1,0 +1,33 @@
+<div class="container" >
+<div class="row">
+  <div class="col-xs-12 col-sm-12  col-md-10 col-lg-8">
+      <div class="panel-heading resume-heading">
+        <div class="row">
+          <div class="col-lg-12" style="justify-content: center;">
+            <div class="col-xs-12 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="images/criaturas/<%= criatura.nome %>.png" style="margin-bottom: 5px">
+              </figure>
+              <div class="row text-center">
+                <div class="col-xs-12 social-btns">
+					<button type="button" class="btn btn-danger">Atacar</button>
+					<button type="button" class="btn btn-warning">Correr</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Nome: <%= criatura.nome %></li>
+                <li class="list-group-item">Vida: <%= criatura.vida_maxima %></li>
+                <li class="list-group-item">Ataque: <%= criatura.ataque %></li>
+                <li class="list-group-item">Defesa: <%= criatura.defesa %></li>
+                <li class="list-group-item">Descrição: <%= criatura.descricao %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+</div>
